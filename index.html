@@ -4,16 +4,35 @@
 		<title></title>
 		<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<style>
+		  .navbar {
+				background-color: #003366;
+				border-radius: 0px;
+			}
+		</style>
 	</head>
 	<body>
+
+		<!-- NAV BAR-->
+
+		<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      		<a class="navbar-brand" href="#" style="color: white">Webstore Hackathon</a>
+    		</div>
+  		</div>
+		</nav>
+
+		<!-- HEADER -->
+
 		<div class = "container">
 			<div id = "header">
 				<p>Where's my money, bitch?! I ain't gonna keep asking nice. Yo, alright? I want my money and my dope. Come on! What, what! What do you wanna say? Shut up! Shut... up! </p>
 			</div>
 			<div id = "nav">
-					<button id = "book_button" class="btn btn-default" type="submit" onclick="show_category('books')">Books</button>
-					<button id = "music_button" class="btn btn-default" type="submit" onclick="show_category('music')">Music</button>
-					<button id = "all_button" class="btn btn-default" type="submit" onclick="show_category('all')">All Categories</button>
+					<button id = "book_button" class="btn btn-primary" type="submit">Books</button>
+					<button id = "music_button" class="btn btn-primary" type="submit">Music</button>
+					<button id = "all_button" class="btn btn-primary" type="submit">All Categories</button>
 			</div>
 			<div id = "content">
 			</div>
@@ -22,67 +41,73 @@
 			</div>
 		</div>
 		<script>
-			var book1, book2, album1, album2;
-			var content = $('#content');
+		var book1, book2, album1, album2;
+		var content = $('#content');
 
-			book1 = {
-				id: "book_1",
-				name: "Harry Potter",
-				category:"x",
-				picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-				price:10,
-				selling_points:"blah blah blah",
-			}
+		book1 = {
+			id: "book_1",
+			name: "Harry Potter",
+			category:"x",
+			picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+			price:10,
+			selling_points:"blah blah blah",
+		}
 
-			book2 = {
-				id: "book_2",
-				name: "Gone Girl",
-				category:"x",
-				picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-				price:10,
-				selling_points:"blah blah blah",
-			}
+		book2 = {
+			id: "book_2",
+			name: "Gone Girl",
+			category:"x",
+			picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+			price:10,
+			selling_points:"blah blah blah",
+		}
 
-			album1 = {
-				id: "album_1",
-				name: "Back in Black",
-				category:"x",
-				picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-				price:10,
-				selling_points:"blah blah blah",
-			}
+		album1 = {
+			id: "album_1",
+			name: "Back in Black",
+			category:"x",
+			picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+			price:10,
+			selling_points:"blah blah blah",
+		}
 
-			album2 = {
-				id: "album_2",
-				name: "Abbey Road",
-				category:"x",
-				picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-				price:10,
-				selling_points:"blah blah blah",
-			}
+		album2 = {
+			id: "album_2",
+			name: "Abbey Road",
+			category:"x",
+			picture_url:"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+			price:10,
+			selling_points:"blah blah blah",
+		}
 
-			function add(object) {
-				content.append("<div id=" + object["id"] + " class=" + 'product ' + object["category"] + " </div>");
-			 	$("#" + object["id"]).append("<div class='name'>"+ object["name"] +"</div>");
-			 	$("#" + object["id"]).append("<div class='category'>"+ object["category"] +"</div>");
-			 	$("#" + object["id"]).append("<div class='picture_url'><img src='" + object["picture_url"] + "'></div>");
-			 	$("#" + object["id"]).append("<div class='price'>"+ object["price"] +"</div>");
-			 	$("#" + object["id"]).append("<div class='selling_points'>"+ object["selling_points"] +"</div>");
-			}	
-				
-				var show_category = function(category){
-				  $('div.product').hide();
-				  if (category === 'all') {
-				    $('div.product').show();
-				  }else{
-				    if (category === 'books') {
-				      ('div.product.'+category).show();
-				    }else{
-				      ('div.product.'+category).show();
-				    }
-				​
-				  }
-				};
+		function add(object) {
+			content.append("<div id=" + object["id"] + " class=" + object["category"] + " </div>");
+			$("#" + object["id"]).append("<div class='name'>"+ object["name"] +"</div>");
+			$("#" + object["id"]).append("<div class='category'>"+ object["category"] +"</div>");
+			$("#" + object["id"]).append("<div class='picture_url'><img src='" + object["picture_url"] + "'></div>");
+			$("#" + object["id"]).append("<div class='price'>"+ object["price"] +"</div>");
+			$("#" + object["id"]).append("<div class='selling_points'>"+ object["selling_points"] +"</div>");
+		}
+
+		$("#book_button").click(function() {
+			$("#content").empty();
+			add(book1);
+			add(book2);
+		})
+
+		$("#music_button").click(function() {
+			$("#content").empty();
+			add(album1);
+			add(album2);
+		})
+
+		$("#all_button").click(function() {
+			$("#content").empty();
+			add(book1);
+			add(book2);
+			add(album1);
+			add(album2);
+		})
 		</script>
 	</body>
 </html>
